@@ -7,7 +7,7 @@ const usersRouter = require("./backend/routes/users_routes.js");
 const app = express();
 
 const PORT = process.env.PORT || 8080;
-const publicPath = path.join(__dirname, 'client/build');
+const publicPath = path.join(__dirname, 'frontend/build');
 
 app.use(express.json());
 app.use(cors());
