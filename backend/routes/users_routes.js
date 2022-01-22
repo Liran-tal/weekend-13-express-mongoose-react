@@ -19,7 +19,7 @@ Router.get("/get-users", getUsersControler);
 
 Router.get("/get-active-users", getActiveUsersControler);
 
-Router.get("/get-users-price", getUsersByCashControler);
+Router.get("/get-users-cash", getUsersByCashControler);
 
 Router.put("/update-user-activation", toggleUserActiveControler);
 

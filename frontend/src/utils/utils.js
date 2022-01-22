@@ -1,10 +1,9 @@
 import Axios from '../api/Axios.Api';
 
-export const getAllUsers = async (setState) => {
+export const getAllUsers = async (setUsers) => {
 	try {
 		const data = await Axios.getUsers();
-		setState(data);
-		// return data;
+		setUsers(data);
 	} catch (error) {
 		console.error(error);
 	}
