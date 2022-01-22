@@ -22,20 +22,10 @@ app.get('/users', (req, res) => {
 });
 
 
-const User = require("./backend/schemas/user_schema.js");
-
-app.post('/users', async (req, res) => {
-  try {
-    const newUser = await new User(req.body).save();
-    res.status(200).send(newUser);
-  } catch (error) {
-    res.status(400).send({ error: error.message });
-  }
-})
+app.use("/users", usersRouter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(publicPath, 'index.html'));
 });
 
-app.use("/users", usersRouter);
 app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));

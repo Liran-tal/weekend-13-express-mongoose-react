@@ -9,6 +9,7 @@ const {
 } = require("../../utils/utils");
 
 const createUserControler = async (req, res) => {
+	console.log(req.body.user);
 	try {
 		const newUser = await Services.createUserService(req.body.user);
 		res.status(200).send(newUser);

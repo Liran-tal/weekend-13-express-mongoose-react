@@ -13,20 +13,20 @@ const {
 
 } = require ("../controlers/users/users_controlers.js");
 
-Router.post("/clients/create-user", createUserControler);
+Router.post("/create-user", createUserControler);
 
-Router.get("/clients/get-clients", getUsersControler);
+Router.get("/get-users", getUsersControler);
 
-Router.get("/clients/get-active-users", getActiveUsersControler);
+Router.get("/get-active-users", getActiveUsersControler);
 
-Router.get("/clients/get-users-price", getUsersByCashControler);
+Router.get("/get-users-price", getUsersByCashControler);
 
-Router.put("/clients/update-user-activation", toggleUserActiveControler);
+Router.put("/update-user-activation", toggleUserActiveControler);
 
-Router.put("/clients/update-cash", updateCashControler);
+Router.put("/update-cash", updateCashControler);
 
-Router.put("/clients/transfer-cash", transferCashControler);
+Router.put("/transfer-cash", transferCashControler);
 
-Router.put("/clients/update-credit", updateCreditControler);
+Router.put("/update-credit", updateCreditControler);
 
 module.exports = Router;
