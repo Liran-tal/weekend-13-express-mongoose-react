@@ -1,6 +1,12 @@
-import Axios from './api/Axios.Api';
+import Axios from '../api/Axios.Api';
 
-const handleAllUsers = async () => {
-	const {data} = await Axios.getUsers();
-	console.log(data);
+export const getAllUsers = async (setState) => {
+	try {
+		const data = await Axios.getUsers();
+		setState(data);
+		// return data;
+	} catch (error) {
+		console.error(error);
+	}
 }
+

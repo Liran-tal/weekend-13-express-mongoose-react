@@ -1,18 +1,34 @@
 import React, {useState} from 'react';
 import './App.css';
-import axios from './api/Axios.Api';
+import {
+  getAllUsers,
+
+} from "./utils/utils"
 
 function App() {
-  const [userId, setUserId] = useState([]);
+  const [userId, setUserId] = useState("");
+  const [users, setUsers] = useState([]);
+
+  const displayUsers = () => {
+    return users.map((user) => {
+      return (
+        <div key={user._id}>
+          <div>{`Id: ${user._id}`}</div>
+          <div>{`Cash: ${user.cash}`}</div>
+          <div>{`Credit: ${user.credit}`}</div>
+        </div>
+      )
+    })
+  };
 
   return (
     <div className="App">
       <h1>Hello world</h1>
       <div>
-
+        {displayUsers()}
       </div>
       <button
-      onClick={() => axios.getUsers()}
+      onClick={() => getAllUsers(setUsers)}
       >
         All users
       </button>

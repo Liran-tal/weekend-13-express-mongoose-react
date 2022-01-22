@@ -1,12 +1,6 @@
 const validator = require("validator");
 
 
-const handleError = (status, message) => {
-	const error = new Error(message);
-	error.http_code = status;
-	return  error;
-};
-
 const isCreditEnough = (user, amount) => {
 	return (-user.credit <= user.cash - amount);
 };
@@ -29,7 +23,6 @@ const setRangeNum = (value, lim) => {
 
 
 module.exports = {
-	handleError,
 	isCreditEnough,
 	isValidId,
 	setRangeNum,

@@ -2,7 +2,6 @@ const validator = require("validator");
 const Services = require("../../services/user_services");
 
 const {
-	handleError,
 	isValidId,
 	setRangeNum,
 
@@ -21,8 +20,10 @@ const createUserControler = async (req, res) => {
 
 const getUsersControler = async (req, res) => {
 	try {
+		console.log(req.query);
 		if (req.query.id && !isValidId(req.query.id)) {
-			throw handleError(400, "Id must contain digits (0-9) only");
+			console.log("users_controllers:26, error thrown");
+			throw {status: 400, message: "Id must contain digits (0-9) only"};
 		}
 		const users = await Services.getUsersService(req.query.id);
 		res.status(200).send(users);
@@ -57,7 +58,7 @@ const getUsersByCashControler = async (req, res) => {
 const toggleUserActiveControler = async (req, res) => {
 	try {
 		if (req.query.id && !isValidId(req.query.id)) {
-			throw handleError(400, "Id must contain digits (0-9) only");
+			throw {status: 400, message: "Id must contain digits (0-9) only"};
 		}
 		
 		const users = await Services.toggleUserActiveService(req.query.id);
@@ -73,10 +74,10 @@ const updateCashControler = async (req, res) => {
 	const cashAmount = Number(req.query.cashAmount);
 	try {
 		if (id && !isValidId(id)) {
-			throw handleError(400, "Id must contain digits (0-9) only");
+			throw {status: 400, message: "Id must contain digits (0-9) only"};
 		}
 		if (cashAmount && (!validator.isNumeric(String(cashAmount)) || cashAmount < 0)) {
-			throw handleError(400, "Amount of money must contain digits (0-9) only and cannot be negative");
+			throw {status: 400, message: "Amount of money must contain digits (0-9) only and cannot be negative"};
 		}
 
 		const users = await Services.updateCashService(id, cashAmount);
@@ -92,10 +93,10 @@ const updateCreditControler = async (req, res) => {
 	const newCredit = Number(req.query.newCredit);
 	try {
 		if (id && !isValidId(id)) {
-			throw handleError(400, "Id must contain digits (0-9) only");
+			throw {status: 400, message: "Id must contain digits (0-9) only"};
 		}
 		if (newCredit && (!validator.isNumeric(String(newCredit)) || newCredit < 0)) {
-			throw handleError(400, "Credit value must contain digits (0-9) only and cannot be negative");
+			throw {status: 400, message: "Credit value must contain digits (0-9) only and cannot b} negative"};
 		}
 
 		const users = await Services.updateCreditService(id, newCredit);
@@ -113,10 +114,10 @@ const transferCashControler = async (req, res) => {
 		const targetId = req.query.targetId;
 		const cashAmount = Number(req.query.cashAmount);
 		if ((sourceId && !isValidId(sourceId)) || (targetId && !isValidId(targetId))) {
-			throw handleError(400, "Id must contain digits (0-9) only");
+			throw {status: 400, message: "Id must contain digits (0-9) only"};
 		}
 		if (cashAmount && (!validator.isNumeric(String(cashAmount)) || cashAmount < 0)) {
-			throw handleError(400, "Amount of money must contain digits (0-9) only and cannot be negative");
+			throw {status: 400, message: "Amount of money must contain digits (0-9) only and cannot be negative"};
 		}
 
 		const users = await Services.updateCashService(sourceId, targetId, cashAmount);

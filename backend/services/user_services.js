@@ -1,6 +1,5 @@
 const User = require("../schemas/user_schema.js");
 const { 
-	handleError,
 	isCreditEnough,
 
 } = require("../utils/utils");
@@ -12,7 +11,7 @@ const createUserService = async (newUserData) => {
 	}
 	catch (error) {
 		console.error(error);
-		throw handleError(400, error.message);
+		throw {status: 400, message: error.message};
 	}
 };
 
@@ -23,7 +22,7 @@ const getUsersService = async (id) => {
 	}
 	catch (error) {
 		console.error(error);
-		throw handleError(404, error.message);
+		throw {status: 404, message: error.message};
 	}
 };
 
@@ -34,7 +33,7 @@ const getActiveUsersService = async () => {
 	}
 	catch (error) {
 		console.error(error);
-		throw handleError(404, error.message);
+		throw {status: 404, message: error.message};
 	}
 };
 
@@ -45,7 +44,7 @@ const getUsersByCashService = async (min, max) => {
 	}
 	catch (error) {
 		console.error(error);
-		throw handleError(404, error.message);
+		throw {status: 404, message: error.message};
 	}
 };
 
@@ -62,7 +61,7 @@ const toggleUserActiveService = async (id) => {
 	}
 	catch (error) {
 		console.error(error);
-		throw handleError(404, error.message);
+		throw {status: 404, message: error.message};
 	}
 };
 
@@ -92,7 +91,7 @@ const updateCashService = async (id, amount, isToAdd) => {
 	}
 	catch (error) {
 		console.error(error);
-		throw handleError(404, error.message);
+		throw {status: 404, message: error.message};
 	}
 };
 
@@ -112,7 +111,7 @@ const updateCreditService = async (id, newCredit) => {
 	}
 	catch (error) {
 		console.error(error);
-		throw handleError(404, error.message);
+		throw {status: 404, message: error.message};
 	}
 };
 
@@ -149,7 +148,7 @@ const transferCashService = async (sourceId, targetId, amount) => {
 	}
 	catch (error) {	
 		console.error(error);
-		throw handleError(404, error.message);
+		throw {status: 404, message: error.message};
 	}
 };
 

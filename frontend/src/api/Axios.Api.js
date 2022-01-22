@@ -1,14 +1,14 @@
 import axios from "axios";
 
-
 const ApiHeader = axios.create({ baseURL: "http://localhost:8080/users/", })
 
 
 export default class Axios {
 
   static getUsers = async (id) => {
+		const queryId = id ? `?id=${id}` : "";
 		try {
-			const {data} = await ApiHeader.get("get-users", id); 
+			const {data} = await ApiHeader.get(`get-users/${queryId}`); 
 			return data;
 			
 		} catch (error) {
